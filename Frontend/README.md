@@ -20,14 +20,13 @@ git rebase에 익숙해지기 위한 세 가지 Test가 진행될 예정입니�
 # 세팅
 
 > 팀 프로젝트를 가정하기 위해, 초기 세팅부터 시작해 각자의 작업물을 구현합니다.<br>
-이미 세팅이 완료되신 분들은 `3. Install node modules`부터 진행해주세요!
+> 이미 세팅이 완료되신 분들은 `3. Install node modules`부터 진행해주세요!
 
 <br>
 
 ## 1. 개인 Github 홈페이지로 이동 후 원격 repository를 생성해주세요.
 
 <img width="275" alt="image" src="https://user-images.githubusercontent.com/74031598/205198481-841f7eb0-731c-4d45-ac9d-d2689ace0ad2.png">
-
 
 - repository 이름은 다음과 같이 설정해주세요.
 
@@ -144,51 +143,54 @@ git rebase에 익숙해지기 위한 세 가지 Test가 진행될 예정입니�
          height: 100vh;
        }
 
-       .loginContainer {
-         padding: 30px;
-         border: 1px solid gray;
-         border-radius: 15px;
-         text-align: center;
-       }
+    .loginContainer {
+    padding: 30px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    text-align: center;
+    }
 
-       .title {
-         font-size: 40px;
-       }
+    .title {
+    font-size: 40px;
+    }
 
-       .loginForm {
-         display: flex;
-         flex-direction: column;
-         margin: 40px 0;
-       }
+    .loginForm {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0;
+    }
 
-       .userId,
-       .userPassword {
-         width: 280px;
-         margin-bottom: 15px;
-         padding: 15px 0 15px 15px;
-         border: 1px solid gray;
-         border-radius: 5px;
-         background-color: #fafafa;
-         outline: none;
-       }
+    .userId,
+    .userPassword {
+    width: 280px;
+    margin-bottom: 15px;
+    padding: 15px 0 15px 15px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: #fafafa;
+    outline: none;
+    }
 
-       .loginButton {
-         padding: 15px 0;
-         background-color: #0095f6;
-         border: none;
-         border-radius: 5px;
-         color: white;
-         font-weight: 700;
-         outline: none;
-         cursor: default;
-       }
+    .loginButton {
+    padding: 15px 0;
+    background-color: #0095f6;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    outline: none;
+    cursor: default;
+    }
 
-       .loginButton:disabled {
-         background-color: lightgray;
-       }
-       ```
+    .loginButton:disabled {
+    background-color: lightgray;
+    }
+
+    ```
 
     </details>
+
+    ```
 
 4.  `Router.js`에서 login에 연결되어 있는 routing 경로를 signin으로 변경해주세요.
 
@@ -207,57 +209,58 @@ git rebase에 익숙해지기 위한 세 가지 Test가 진행될 예정입니�
 1.  `Login.js`에 아래의 코드를 입력해 주세요.
        <details><summary>Login.js</summary>
 
-       ```javascript
-       import React, { useState } from "react";
-       import { useNavigate } from "react-router-dom";
-       import "./Login.css";
+    ```javascript
+    import React, { useState } from "react";
+    import { useNavigate } from "react-router-dom";
+    import "./Login.css";
 
-       export default function Login() {
-         const [userInfo, setUserInfo] = useState({ id: "", password: "" });
-         const navigate = useNavigate();
+    export default function Login() {
+      const [userInfo, setUserInfo] = useState({ id: "", password: "" });
+      const navigate = useNavigate();
 
-         const getUserInfo = (e) => {
-           const { name, value } = e.target;
-           setUserInfo({ ...userInfo, [name]: value });
-         };
+      const getUserInfo = (e) => {
+        const { name, value } = e.target;
+        setUserInfo({ ...userInfo, [name]: value });
+      };
 
-         const isValid = userInfo.id.includes("@") && userInfo.password.length >= 5;
+      const isValid =
+        userInfo.id.includes("@") && userInfo.password.length >= 5;
 
-         const goToMain = (e) => {
-           e.preventDefault();
-           navigate("/main");
-         };
+      const goToMain = (e) => {
+        e.preventDefault();
+        navigate("/main");
+      };
 
-         return (
-           <div className="login">
-             <main className="loginContainer">
-               <h1 className="title">Git Rebase Test</h1>
-               <form className="loginForm" onSubmit={goToMain}>
-                 <input
-                   className="userId"
-                   name="id"
-                   type="text"
-                   value={userInfo.id}
-                   placeholder="이메일을 입력해 주세요."
-                   onChange={getUserInfo}
-                 />
-                 <input
-                   className="userPassword"
-                   name="password"
-                   type="password"
-                   value={userInfo.password}
-                   placeholder="비밀번호를 입력해 주세요."
-                   onChange={getUserInfo}
-                 />
-                 <button className="loginButton" type="button" disabled={!isValid}>
-                   로그인
-                 </button>
-               </form>
-             </main>
-           </div>
-         );
-       }
-       ```
+      return (
+        <div className="login">
+          <main className="loginContainer">
+            <h1 className="title">Git Rebase Test</h1>
+            <form className="loginForm" onSubmit={goToMain}>
+              <input
+                className="userId"
+                name="id"
+                type="text"
+                value={userInfo.id}
+                placeholder="이메일을 입력해 주세요."
+                onChange={getUserInfo}
+              />
+              <input
+                className="userPassword"
+                name="password"
+                type="password"
+                value={userInfo.password}
+                placeholder="비밀번호를 입력해 주세요."
+                onChange={getUserInfo}
+              />
+              <button className="loginButton" type="button" disabled={!isValid}>
+                로그인
+              </button>
+            </form>
+          </main>
+        </div>
+      );
+    }
+    ```
 
     </details>
 
@@ -458,7 +461,7 @@ $ git config --global core.editor "vim"
 ## 2. rebase -i
 
 1. `rebase` 키워드와 `-i`를 사용하여 과정에 따라 main/master branch의 내용을 `feature/login` 브랜치에 병합합니다.
-<br/> interactive rebase 진행 중, commit을 squash하여 한 개의 커밋으로 만들도록 합니다.
+   <br/> interactive rebase 진행 중, commit을 squash하여 한 개의 커밋으로 만들도록 합니다.
 
 2. `git log`를 입력해 하나로 커밋이 합쳐진 것을 확인한 후 `push`합니다.
 
@@ -524,9 +527,9 @@ $ git config --global core.editor "vim"
 - 아래 내용에 얼마나 알고있는지 각자의 양식과 언어로 자유롭게 작성해주시면 됩니다.
 
 ```
-$ git rebase [-i]
-$ git rebase --abort
-$ git rebase --continue
-$ git reflog
-$ git reset
+$ git rebase [-i] : commit의 base를 변경하여, commit history를 일렬로 잘 정리해줍니다. [-i] squash를 통하여 여러개의 commit를 하나로 통합할 수 있습니다.
+$ git rebase --abort : rebase 도중 rebase를 진행하기 전 상황으로 돌아갑니다.
+$ git rebase --continue : 충돌이 발생했을시 해결한후 rebase를 계속 진행합니다.
+$ git reflog : 보관된 git 이력을 확인합니다.
+$ git reset : 현재 작업 위치인 HEAD의 포인터를 특정 위치로 변경합니다.
 ```
